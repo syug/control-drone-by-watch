@@ -1,0 +1,863 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0025F9041C228801003B61A6 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9031C228801003B61A6 /* bg@2x.png */; };
+		0025F9551C22D4C7003B61A6 /* cmd-emergency@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9451C22D4C7003B61A6 /* cmd-emergency@2x.png */; };
+		0025F9561C22D4C7003B61A6 /* cmd-flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9461C22D4C7003B61A6 /* cmd-flip@2x.png */; };
+		0025F9571C22D4C7003B61A6 /* cmd-gaz0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9471C22D4C7003B61A6 /* cmd-gaz0@2x.png */; };
+		0025F9581C22D4C7003B61A6 /* cmd-gaz1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9481C22D4C7003B61A6 /* cmd-gaz1@2x.png */; };
+		0025F9591C22D4C7003B61A6 /* cmd-gaz2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9491C22D4C7003B61A6 /* cmd-gaz2@2x.png */; };
+		0025F95A1C22D4C7003B61A6 /* cmd-landing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94A1C22D4C7003B61A6 /* cmd-landing@2x.png */; };
+		0025F95B1C22D4C7003B61A6 /* cmd-pitch0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94B1C22D4C7003B61A6 /* cmd-pitch0@2x.png */; };
+		0025F95C1C22D4C7003B61A6 /* cmd-pitch1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94C1C22D4C7003B61A6 /* cmd-pitch1@2x.png */; };
+		0025F95D1C22D4C7003B61A6 /* cmd-pitch2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94D1C22D4C7003B61A6 /* cmd-pitch2@2x.png */; };
+		0025F95E1C22D4C7003B61A6 /* cmd-roll0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94E1C22D4C7003B61A6 /* cmd-roll0@2x.png */; };
+		0025F95F1C22D4C7003B61A6 /* cmd-roll1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F94F1C22D4C7003B61A6 /* cmd-roll1@2x.png */; };
+		0025F9601C22D4C7003B61A6 /* cmd-roll2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9501C22D4C7003B61A6 /* cmd-roll2@2x.png */; };
+		0025F9611C22D4C7003B61A6 /* cmd-takeoff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9511C22D4C7003B61A6 /* cmd-takeoff@2x.png */; };
+		0025F9621C22D4C7003B61A6 /* cmd-yaw0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9521C22D4C7003B61A6 /* cmd-yaw0@2x.png */; };
+		0025F9631C22D4C7003B61A6 /* cmd-yaw1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9531C22D4C7003B61A6 /* cmd-yaw1@2x.png */; };
+		0025F9641C22D4C7003B61A6 /* cmd-yaw2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0025F9541C22D4C7003B61A6 /* cmd-yaw2@2x.png */; };
+		0029E0291C23A71000C60DB1 /* btn-cam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0029E0251C23A71000C60DB1 /* btn-cam@2x.png */; };
+		0029E02B1C23A71000C60DB1 /* btn-landing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0029E0271C23A71000C60DB1 /* btn-landing@2x.png */; };
+		0029E02C1C23A71000C60DB1 /* btn-takeoff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0029E0281C23A71000C60DB1 /* btn-takeoff@2x.png */; };
+		0029E02E1C23A80300C60DB1 /* btn-emergency-phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0029E02D1C23A80300C60DB1 /* btn-emergency-phone@2x.png */; };
+		00746AA61C22E1620075F016 /* cmd-picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00746AA31C22E1620075F016 /* cmd-picture@2x.png */; };
+		00746AA71C22E1620075F016 /* cmd-steering0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00746AA41C22E1620075F016 /* cmd-steering0@2x.png */; };
+		00746AA81C22E1620075F016 /* cmd-steering1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00746AA51C22E1620075F016 /* cmd-steering1@2x.png */; };
+		007AB1B11C19824E00B7F7B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AB1B01C19824E00B7F7B5 /* AppDelegate.swift */; };
+		007AB1B31C19824E00B7F7B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AB1B21C19824E00B7F7B5 /* ViewController.swift */; };
+		007AB1B61C19824E00B7F7B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1B41C19824E00B7F7B5 /* Main.storyboard */; };
+		007AB1B81C19824E00B7F7B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1B71C19824E00B7F7B5 /* Assets.xcassets */; };
+		007AB1BB1C19824E00B7F7B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1B91C19824E00B7F7B5 /* LaunchScreen.storyboard */; };
+		007AB1C01C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 007AB1BF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app */; };
+		007AB1C61C19824E00B7F7B5 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1C41C19824E00B7F7B5 /* Interface.storyboard */; };
+		007AB1C81C19824E00B7F7B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1C71C19824E00B7F7B5 /* Assets.xcassets */; };
+		007AB1CF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 007AB1CE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		007AB1D61C19824E00B7F7B5 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AB1D51C19824E00B7F7B5 /* InterfaceController.swift */; };
+		007AB1D81C19824E00B7F7B5 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AB1D71C19824E00B7F7B5 /* ExtensionDelegate.swift */; };
+		007AB1DA1C19824E00B7F7B5 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007AB1D91C19824E00B7F7B5 /* NotificationController.swift */; };
+		007AB1DC1C19824E00B7F7B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007AB1DB1C19824E00B7F7B5 /* Assets.xcassets */; };
+		007AB1FD1C19825C00B7F7B5 /* curl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1EC1C19825C00B7F7B5 /* curl.framework */; };
+		007AB1FE1C19825C00B7F7B5 /* json.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1ED1C19825C00B7F7B5 /* json.framework */; };
+		007AB1FF1C19825C00B7F7B5 /* libARCommands.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1EE1C19825C00B7F7B5 /* libARCommands.framework */; };
+		007AB2001C19825C00B7F7B5 /* libARController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1EF1C19825C00B7F7B5 /* libARController.framework */; };
+		007AB2011C19825C00B7F7B5 /* libARDataTransfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F01C19825C00B7F7B5 /* libARDataTransfer.framework */; };
+		007AB2021C19825C00B7F7B5 /* libARDiscovery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F11C19825C00B7F7B5 /* libARDiscovery.framework */; };
+		007AB2031C19825C00B7F7B5 /* libARMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F21C19825C00B7F7B5 /* libARMavlink.framework */; };
+		007AB2041C19825C00B7F7B5 /* libARMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F31C19825C00B7F7B5 /* libARMedia.framework */; };
+		007AB2051C19825C00B7F7B5 /* libARNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F41C19825C00B7F7B5 /* libARNetwork.framework */; };
+		007AB2061C19825C00B7F7B5 /* libARNetworkAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F51C19825C00B7F7B5 /* libARNetworkAL.framework */; };
+		007AB2071C19825C00B7F7B5 /* libARSAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F61C19825C00B7F7B5 /* libARSAL.framework */; };
+		007AB2081C19825C00B7F7B5 /* libARStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F71C19825C00B7F7B5 /* libARStream.framework */; };
+		007AB2091C19825C00B7F7B5 /* libARUpdater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F81C19825C00B7F7B5 /* libARUpdater.framework */; };
+		007AB20A1C19825C00B7F7B5 /* libARUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1F91C19825C00B7F7B5 /* libARUtils.framework */; };
+		007AB20B1C19825C00B7F7B5 /* libressl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007AB1FA1C19825C00B7F7B5 /* libressl.framework */; };
+		007AB21D1C1982CA00B7F7B5 /* RSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 007AB2181C1982CA00B7F7B5 /* RSManager.m */; };
+		00C2266F1C225A0800D80403 /* menu-icon-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C2266B1C225A0800D80403 /* menu-icon-back.png */; };
+		00C226701C225A0800D80403 /* menu-icon-front.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C2266C1C225A0800D80403 /* menu-icon-front.png */; };
+		00C226711C225A0800D80403 /* menu-icon-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C2266D1C225A0800D80403 /* menu-icon-left.png */; };
+		00C226721C225A0800D80403 /* menu-icon-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C2266E1C225A0800D80403 /* menu-icon-right.png */; };
+		00C226771C22680D00D80403 /* btn-cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C226731C22680D00D80403 /* btn-cam.png */; };
+		00C226781C22680D00D80403 /* btn-emergency.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C226741C22680D00D80403 /* btn-emergency.png */; };
+		00C226791C22680D00D80403 /* btn-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C226751C22680D00D80403 /* btn-lock.png */; };
+		00C2267A1C22680D00D80403 /* btn-unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C226761C22680D00D80403 /* btn-unlock.png */; };
+		00C4B01A1C213D3500F78886 /* stick-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B0161C213D3500F78886 /* stick-off.png */; };
+		00C4B01B1C213D3500F78886 /* stick-off2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B0171C213D3500F78886 /* stick-off2.png */; };
+		00C4B01C1C213D3500F78886 /* stick-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B0181C213D3500F78886 /* stick-on.png */; };
+		00C4B01D1C213D3500F78886 /* stick-on2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B0191C213D3500F78886 /* stick-on2.png */; };
+		00EE94B41C1E94F700A58A7F /* WatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE94B31C1E94F700A58A7F /* WatchStatus.swift */; };
+		00EE94B51C1E94FA00A58A7F /* WatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE94B31C1E94F700A58A7F /* WatchStatus.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		007AB1C11C19824E00B7F7B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007AB1A51C19824E00B7F7B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 007AB1BE1C19824E00B7F7B5;
+			remoteInfo = "ControlDroneByWatch WatchKit App";
+		};
+		007AB1D01C19824E00B7F7B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007AB1A51C19824E00B7F7B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 007AB1CD1C19824E00B7F7B5;
+			remoteInfo = "ControlDroneByWatch WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		007AB1E31C19824E00B7F7B5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				007AB1CF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		007AB1E71C19824E00B7F7B5 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				007AB1C01C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0025F9031C228801003B61A6 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		0025F9451C22D4C7003B61A6 /* cmd-emergency@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-emergency@2x.png"; sourceTree = "<group>"; };
+		0025F9461C22D4C7003B61A6 /* cmd-flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-flip@2x.png"; sourceTree = "<group>"; };
+		0025F9471C22D4C7003B61A6 /* cmd-gaz0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-gaz0@2x.png"; sourceTree = "<group>"; };
+		0025F9481C22D4C7003B61A6 /* cmd-gaz1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-gaz1@2x.png"; sourceTree = "<group>"; };
+		0025F9491C22D4C7003B61A6 /* cmd-gaz2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-gaz2@2x.png"; sourceTree = "<group>"; };
+		0025F94A1C22D4C7003B61A6 /* cmd-landing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-landing@2x.png"; sourceTree = "<group>"; };
+		0025F94B1C22D4C7003B61A6 /* cmd-pitch0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-pitch0@2x.png"; sourceTree = "<group>"; };
+		0025F94C1C22D4C7003B61A6 /* cmd-pitch1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-pitch1@2x.png"; sourceTree = "<group>"; };
+		0025F94D1C22D4C7003B61A6 /* cmd-pitch2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-pitch2@2x.png"; sourceTree = "<group>"; };
+		0025F94E1C22D4C7003B61A6 /* cmd-roll0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-roll0@2x.png"; sourceTree = "<group>"; };
+		0025F94F1C22D4C7003B61A6 /* cmd-roll1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-roll1@2x.png"; sourceTree = "<group>"; };
+		0025F9501C22D4C7003B61A6 /* cmd-roll2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-roll2@2x.png"; sourceTree = "<group>"; };
+		0025F9511C22D4C7003B61A6 /* cmd-takeoff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-takeoff@2x.png"; sourceTree = "<group>"; };
+		0025F9521C22D4C7003B61A6 /* cmd-yaw0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-yaw0@2x.png"; sourceTree = "<group>"; };
+		0025F9531C22D4C7003B61A6 /* cmd-yaw1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-yaw1@2x.png"; sourceTree = "<group>"; };
+		0025F9541C22D4C7003B61A6 /* cmd-yaw2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-yaw2@2x.png"; sourceTree = "<group>"; };
+		0029E0251C23A71000C60DB1 /* btn-cam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-cam@2x.png"; sourceTree = "<group>"; };
+		0029E0271C23A71000C60DB1 /* btn-landing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-landing@2x.png"; sourceTree = "<group>"; };
+		0029E0281C23A71000C60DB1 /* btn-takeoff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-takeoff@2x.png"; sourceTree = "<group>"; };
+		0029E02D1C23A80300C60DB1 /* btn-emergency-phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-emergency-phone@2x.png"; sourceTree = "<group>"; };
+		00746AA31C22E1620075F016 /* cmd-picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-picture@2x.png"; sourceTree = "<group>"; };
+		00746AA41C22E1620075F016 /* cmd-steering0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-steering0@2x.png"; sourceTree = "<group>"; };
+		00746AA51C22E1620075F016 /* cmd-steering1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-steering1@2x.png"; sourceTree = "<group>"; };
+		007AB1AD1C19824E00B7F7B5 /* ControlDroneByWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlDroneByWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		007AB1B01C19824E00B7F7B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		007AB1B21C19824E00B7F7B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		007AB1B51C19824E00B7F7B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		007AB1B71C19824E00B7F7B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		007AB1BA1C19824E00B7F7B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		007AB1BC1C19824E00B7F7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		007AB1BF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ControlDroneByWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		007AB1C51C19824E00B7F7B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		007AB1C71C19824E00B7F7B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		007AB1C91C19824E00B7F7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		007AB1CE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ControlDroneByWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		007AB1D41C19824E00B7F7B5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		007AB1D51C19824E00B7F7B5 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		007AB1D71C19824E00B7F7B5 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		007AB1D91C19824E00B7F7B5 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		007AB1DB1C19824E00B7F7B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		007AB1DD1C19824E00B7F7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		007AB1EC1C19825C00B7F7B5 /* curl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = curl.framework; sourceTree = "<group>"; };
+		007AB1ED1C19825C00B7F7B5 /* json.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = json.framework; sourceTree = "<group>"; };
+		007AB1EE1C19825C00B7F7B5 /* libARCommands.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARCommands.framework; sourceTree = "<group>"; };
+		007AB1EF1C19825C00B7F7B5 /* libARController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARController.framework; sourceTree = "<group>"; };
+		007AB1F01C19825C00B7F7B5 /* libARDataTransfer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARDataTransfer.framework; sourceTree = "<group>"; };
+		007AB1F11C19825C00B7F7B5 /* libARDiscovery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARDiscovery.framework; sourceTree = "<group>"; };
+		007AB1F21C19825C00B7F7B5 /* libARMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARMavlink.framework; sourceTree = "<group>"; };
+		007AB1F31C19825C00B7F7B5 /* libARMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARMedia.framework; sourceTree = "<group>"; };
+		007AB1F41C19825C00B7F7B5 /* libARNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARNetwork.framework; sourceTree = "<group>"; };
+		007AB1F51C19825C00B7F7B5 /* libARNetworkAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARNetworkAL.framework; sourceTree = "<group>"; };
+		007AB1F61C19825C00B7F7B5 /* libARSAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARSAL.framework; sourceTree = "<group>"; };
+		007AB1F71C19825C00B7F7B5 /* libARStream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARStream.framework; sourceTree = "<group>"; };
+		007AB1F81C19825C00B7F7B5 /* libARUpdater.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARUpdater.framework; sourceTree = "<group>"; };
+		007AB1F91C19825C00B7F7B5 /* libARUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libARUtils.framework; sourceTree = "<group>"; };
+		007AB1FA1C19825C00B7F7B5 /* libressl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libressl.framework; sourceTree = "<group>"; };
+		007AB20E1C19827500B7F7B5 /* ControlDroneByWatch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ControlDroneByWatch-Bridging-Header.h"; sourceTree = "<group>"; };
+		007AB20F1C19827500B7F7B5 /* ControlDroneByWatch WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ControlDroneByWatch WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		007AB2171C1982CA00B7F7B5 /* RSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSManager.h; sourceTree = "<group>"; };
+		007AB2181C1982CA00B7F7B5 /* RSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSManager.m; sourceTree = "<group>"; };
+		00C2266B1C225A0800D80403 /* menu-icon-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-back.png"; sourceTree = "<group>"; };
+		00C2266C1C225A0800D80403 /* menu-icon-front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-front.png"; sourceTree = "<group>"; };
+		00C2266D1C225A0800D80403 /* menu-icon-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-left.png"; sourceTree = "<group>"; };
+		00C2266E1C225A0800D80403 /* menu-icon-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-right.png"; sourceTree = "<group>"; };
+		00C226731C22680D00D80403 /* btn-cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-cam.png"; sourceTree = "<group>"; };
+		00C226741C22680D00D80403 /* btn-emergency.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-emergency.png"; sourceTree = "<group>"; };
+		00C226751C22680D00D80403 /* btn-lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-lock.png"; sourceTree = "<group>"; };
+		00C226761C22680D00D80403 /* btn-unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-unlock.png"; sourceTree = "<group>"; };
+		00C4B0161C213D3500F78886 /* stick-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-off.png"; sourceTree = "<group>"; };
+		00C4B0171C213D3500F78886 /* stick-off2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-off2.png"; sourceTree = "<group>"; };
+		00C4B0181C213D3500F78886 /* stick-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-on.png"; sourceTree = "<group>"; };
+		00C4B0191C213D3500F78886 /* stick-on2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-on2.png"; sourceTree = "<group>"; };
+		00EE94B31C1E94F700A58A7F /* WatchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchStatus.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		007AB1AA1C19824E00B7F7B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007AB1FF1C19825C00B7F7B5 /* libARCommands.framework in Frameworks */,
+				007AB2091C19825C00B7F7B5 /* libARUpdater.framework in Frameworks */,
+				007AB1FE1C19825C00B7F7B5 /* json.framework in Frameworks */,
+				007AB2041C19825C00B7F7B5 /* libARMedia.framework in Frameworks */,
+				007AB2031C19825C00B7F7B5 /* libARMavlink.framework in Frameworks */,
+				007AB2051C19825C00B7F7B5 /* libARNetwork.framework in Frameworks */,
+				007AB1FD1C19825C00B7F7B5 /* curl.framework in Frameworks */,
+				007AB2071C19825C00B7F7B5 /* libARSAL.framework in Frameworks */,
+				007AB20B1C19825C00B7F7B5 /* libressl.framework in Frameworks */,
+				007AB2011C19825C00B7F7B5 /* libARDataTransfer.framework in Frameworks */,
+				007AB2061C19825C00B7F7B5 /* libARNetworkAL.framework in Frameworks */,
+				007AB2021C19825C00B7F7B5 /* libARDiscovery.framework in Frameworks */,
+				007AB2001C19825C00B7F7B5 /* libARController.framework in Frameworks */,
+				007AB2081C19825C00B7F7B5 /* libARStream.framework in Frameworks */,
+				007AB20A1C19825C00B7F7B5 /* libARUtils.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		007AB1CB1C19824E00B7F7B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0025F9021C228801003B61A6 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				0025F9031C228801003B61A6 /* bg@2x.png */,
+				0025F9451C22D4C7003B61A6 /* cmd-emergency@2x.png */,
+				0025F9461C22D4C7003B61A6 /* cmd-flip@2x.png */,
+				0025F9471C22D4C7003B61A6 /* cmd-gaz0@2x.png */,
+				0025F9481C22D4C7003B61A6 /* cmd-gaz1@2x.png */,
+				0025F9491C22D4C7003B61A6 /* cmd-gaz2@2x.png */,
+				0025F94A1C22D4C7003B61A6 /* cmd-landing@2x.png */,
+				0025F94B1C22D4C7003B61A6 /* cmd-pitch0@2x.png */,
+				0025F94C1C22D4C7003B61A6 /* cmd-pitch1@2x.png */,
+				0025F94D1C22D4C7003B61A6 /* cmd-pitch2@2x.png */,
+				0025F94E1C22D4C7003B61A6 /* cmd-roll0@2x.png */,
+				0025F94F1C22D4C7003B61A6 /* cmd-roll1@2x.png */,
+				0025F9501C22D4C7003B61A6 /* cmd-roll2@2x.png */,
+				0025F9511C22D4C7003B61A6 /* cmd-takeoff@2x.png */,
+				0025F9521C22D4C7003B61A6 /* cmd-yaw0@2x.png */,
+				0025F9531C22D4C7003B61A6 /* cmd-yaw1@2x.png */,
+				0025F9541C22D4C7003B61A6 /* cmd-yaw2@2x.png */,
+				00746AA31C22E1620075F016 /* cmd-picture@2x.png */,
+				00746AA41C22E1620075F016 /* cmd-steering0@2x.png */,
+				00746AA51C22E1620075F016 /* cmd-steering1@2x.png */,
+				0029E0251C23A71000C60DB1 /* btn-cam@2x.png */,
+				0029E02D1C23A80300C60DB1 /* btn-emergency-phone@2x.png */,
+				0029E0271C23A71000C60DB1 /* btn-landing@2x.png */,
+				0029E0281C23A71000C60DB1 /* btn-takeoff@2x.png */,
+			);
+			name = Asset;
+			path = Resources/Asset;
+			sourceTree = "<group>";
+		};
+		007AB1A41C19824E00B7F7B5 = {
+			isa = PBXGroup;
+			children = (
+				007AB1EB1C19825C00B7F7B5 /* ARSDK3_iOS_3_7_5 */,
+				007AB1AF1C19824E00B7F7B5 /* ControlDroneByWatch */,
+				007AB1C31C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */,
+				007AB1D21C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */,
+				007AB1AE1C19824E00B7F7B5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		007AB1AE1C19824E00B7F7B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				007AB1AD1C19824E00B7F7B5 /* ControlDroneByWatch.app */,
+				007AB1BF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app */,
+				007AB1CE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		007AB1AF1C19824E00B7F7B5 /* ControlDroneByWatch */ = {
+			isa = PBXGroup;
+			children = (
+				0025F9021C228801003B61A6 /* Asset */,
+				007AB1B01C19824E00B7F7B5 /* AppDelegate.swift */,
+				007AB1B21C19824E00B7F7B5 /* ViewController.swift */,
+				007AB1B41C19824E00B7F7B5 /* Main.storyboard */,
+				007AB1B71C19824E00B7F7B5 /* Assets.xcassets */,
+				007AB1B91C19824E00B7F7B5 /* LaunchScreen.storyboard */,
+				007AB1BC1C19824E00B7F7B5 /* Info.plist */,
+				007AB2141C1982CA00B7F7B5 /* ARDroneBridge */,
+				007AB2131C19828000B7F7B5 /* Bridging-Headers */,
+			);
+			path = ControlDroneByWatch;
+			sourceTree = "<group>";
+		};
+		007AB1C31C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				007AB1C41C19824E00B7F7B5 /* Interface.storyboard */,
+				007AB1C71C19824E00B7F7B5 /* Assets.xcassets */,
+				007AB1C91C19824E00B7F7B5 /* Info.plist */,
+				00C4B0141C213D3500F78886 /* Resources */,
+			);
+			path = "ControlDroneByWatch WatchKit App";
+			sourceTree = "<group>";
+		};
+		007AB1D21C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				007AB1D51C19824E00B7F7B5 /* InterfaceController.swift */,
+				00EE94B31C1E94F700A58A7F /* WatchStatus.swift */,
+				007AB1D71C19824E00B7F7B5 /* ExtensionDelegate.swift */,
+				007AB1D91C19824E00B7F7B5 /* NotificationController.swift */,
+				007AB1DB1C19824E00B7F7B5 /* Assets.xcassets */,
+				007AB1DD1C19824E00B7F7B5 /* Info.plist */,
+				007AB1D31C19824E00B7F7B5 /* Supporting Files */,
+			);
+			path = "ControlDroneByWatch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		007AB1D31C19824E00B7F7B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				007AB1D41C19824E00B7F7B5 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		007AB1EB1C19825C00B7F7B5 /* ARSDK3_iOS_3_7_5 */ = {
+			isa = PBXGroup;
+			children = (
+				007AB1EC1C19825C00B7F7B5 /* curl.framework */,
+				007AB1ED1C19825C00B7F7B5 /* json.framework */,
+				007AB1EE1C19825C00B7F7B5 /* libARCommands.framework */,
+				007AB1EF1C19825C00B7F7B5 /* libARController.framework */,
+				007AB1F01C19825C00B7F7B5 /* libARDataTransfer.framework */,
+				007AB1F11C19825C00B7F7B5 /* libARDiscovery.framework */,
+				007AB1F21C19825C00B7F7B5 /* libARMavlink.framework */,
+				007AB1F31C19825C00B7F7B5 /* libARMedia.framework */,
+				007AB1F41C19825C00B7F7B5 /* libARNetwork.framework */,
+				007AB1F51C19825C00B7F7B5 /* libARNetworkAL.framework */,
+				007AB1F61C19825C00B7F7B5 /* libARSAL.framework */,
+				007AB1F71C19825C00B7F7B5 /* libARStream.framework */,
+				007AB1F81C19825C00B7F7B5 /* libARUpdater.framework */,
+				007AB1F91C19825C00B7F7B5 /* libARUtils.framework */,
+				007AB1FA1C19825C00B7F7B5 /* libressl.framework */,
+			);
+			path = ARSDK3_iOS_3_7_5;
+			sourceTree = "<group>";
+		};
+		007AB2131C19828000B7F7B5 /* Bridging-Headers */ = {
+			isa = PBXGroup;
+			children = (
+				007AB20E1C19827500B7F7B5 /* ControlDroneByWatch-Bridging-Header.h */,
+				007AB20F1C19827500B7F7B5 /* ControlDroneByWatch WatchKit Extension-Bridging-Header.h */,
+			);
+			name = "Bridging-Headers";
+			sourceTree = "<group>";
+		};
+		007AB2141C1982CA00B7F7B5 /* ARDroneBridge */ = {
+			isa = PBXGroup;
+			children = (
+				007AB2171C1982CA00B7F7B5 /* RSManager.h */,
+				007AB2181C1982CA00B7F7B5 /* RSManager.m */,
+			);
+			path = ARDroneBridge;
+			sourceTree = "<group>";
+		};
+		00C4B0141C213D3500F78886 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				00C4B0151C213D3500F78886 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		00C4B0151C213D3500F78886 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				00C226731C22680D00D80403 /* btn-cam.png */,
+				00C226741C22680D00D80403 /* btn-emergency.png */,
+				00C226751C22680D00D80403 /* btn-lock.png */,
+				00C226761C22680D00D80403 /* btn-unlock.png */,
+				00C2266B1C225A0800D80403 /* menu-icon-back.png */,
+				00C2266C1C225A0800D80403 /* menu-icon-front.png */,
+				00C2266D1C225A0800D80403 /* menu-icon-left.png */,
+				00C2266E1C225A0800D80403 /* menu-icon-right.png */,
+				00C4B0161C213D3500F78886 /* stick-off.png */,
+				00C4B0171C213D3500F78886 /* stick-off2.png */,
+				00C4B0181C213D3500F78886 /* stick-on.png */,
+				00C4B0191C213D3500F78886 /* stick-on2.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		007AB1AC1C19824E00B7F7B5 /* ControlDroneByWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 007AB1E81C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch" */;
+			buildPhases = (
+				007AB1A91C19824E00B7F7B5 /* Sources */,
+				007AB1AA1C19824E00B7F7B5 /* Frameworks */,
+				007AB1AB1C19824E00B7F7B5 /* Resources */,
+				007AB1E71C19824E00B7F7B5 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				007AB1C21C19824E00B7F7B5 /* PBXTargetDependency */,
+			);
+			name = ControlDroneByWatch;
+			productName = ControlDroneByWatch;
+			productReference = 007AB1AD1C19824E00B7F7B5 /* ControlDroneByWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		007AB1BE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 007AB1E41C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch WatchKit App" */;
+			buildPhases = (
+				007AB1BD1C19824E00B7F7B5 /* Resources */,
+				007AB1E31C19824E00B7F7B5 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				007AB1D11C19824E00B7F7B5 /* PBXTargetDependency */,
+			);
+			name = "ControlDroneByWatch WatchKit App";
+			productName = "ControlDroneByWatch WatchKit App";
+			productReference = 007AB1BF1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		007AB1CD1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 007AB1E01C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch WatchKit Extension" */;
+			buildPhases = (
+				007AB1CA1C19824E00B7F7B5 /* Sources */,
+				007AB1CB1C19824E00B7F7B5 /* Frameworks */,
+				007AB1CC1C19824E00B7F7B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ControlDroneByWatch WatchKit Extension";
+			productName = "ControlDroneByWatch WatchKit Extension";
+			productReference = 007AB1CE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		007AB1A51C19824E00B7F7B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Syugo Saito";
+				TargetAttributes = {
+					007AB1AC1C19824E00B7F7B5 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					007AB1BE1C19824E00B7F7B5 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					007AB1CD1C19824E00B7F7B5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = MX9KLF5443;
+					};
+				};
+			};
+			buildConfigurationList = 007AB1A81C19824E00B7F7B5 /* Build configuration list for PBXProject "ControlDroneByWatch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 007AB1A41C19824E00B7F7B5;
+			productRefGroup = 007AB1AE1C19824E00B7F7B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				007AB1AC1C19824E00B7F7B5 /* ControlDroneByWatch */,
+				007AB1BE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */,
+				007AB1CD1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		007AB1AB1C19824E00B7F7B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0025F95C1C22D4C7003B61A6 /* cmd-pitch1@2x.png in Resources */,
+				0025F9581C22D4C7003B61A6 /* cmd-gaz1@2x.png in Resources */,
+				0025F95B1C22D4C7003B61A6 /* cmd-pitch0@2x.png in Resources */,
+				0025F95A1C22D4C7003B61A6 /* cmd-landing@2x.png in Resources */,
+				00746AA61C22E1620075F016 /* cmd-picture@2x.png in Resources */,
+				0029E0291C23A71000C60DB1 /* btn-cam@2x.png in Resources */,
+				007AB1BB1C19824E00B7F7B5 /* LaunchScreen.storyboard in Resources */,
+				0025F9631C22D4C7003B61A6 /* cmd-yaw1@2x.png in Resources */,
+				0025F9611C22D4C7003B61A6 /* cmd-takeoff@2x.png in Resources */,
+				0025F95D1C22D4C7003B61A6 /* cmd-pitch2@2x.png in Resources */,
+				0025F9571C22D4C7003B61A6 /* cmd-gaz0@2x.png in Resources */,
+				0025F9591C22D4C7003B61A6 /* cmd-gaz2@2x.png in Resources */,
+				0029E02C1C23A71000C60DB1 /* btn-takeoff@2x.png in Resources */,
+				0025F9551C22D4C7003B61A6 /* cmd-emergency@2x.png in Resources */,
+				0025F9621C22D4C7003B61A6 /* cmd-yaw0@2x.png in Resources */,
+				0029E02B1C23A71000C60DB1 /* btn-landing@2x.png in Resources */,
+				0025F9601C22D4C7003B61A6 /* cmd-roll2@2x.png in Resources */,
+				007AB1B81C19824E00B7F7B5 /* Assets.xcassets in Resources */,
+				00746AA81C22E1620075F016 /* cmd-steering1@2x.png in Resources */,
+				007AB1B61C19824E00B7F7B5 /* Main.storyboard in Resources */,
+				0025F9561C22D4C7003B61A6 /* cmd-flip@2x.png in Resources */,
+				0029E02E1C23A80300C60DB1 /* btn-emergency-phone@2x.png in Resources */,
+				0025F9641C22D4C7003B61A6 /* cmd-yaw2@2x.png in Resources */,
+				0025F9041C228801003B61A6 /* bg@2x.png in Resources */,
+				00746AA71C22E1620075F016 /* cmd-steering0@2x.png in Resources */,
+				0025F95E1C22D4C7003B61A6 /* cmd-roll0@2x.png in Resources */,
+				0025F95F1C22D4C7003B61A6 /* cmd-roll1@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		007AB1BD1C19824E00B7F7B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007AB1C81C19824E00B7F7B5 /* Assets.xcassets in Resources */,
+				00C4B01B1C213D3500F78886 /* stick-off2.png in Resources */,
+				00C226791C22680D00D80403 /* btn-lock.png in Resources */,
+				00C2266F1C225A0800D80403 /* menu-icon-back.png in Resources */,
+				00C2267A1C22680D00D80403 /* btn-unlock.png in Resources */,
+				00C4B01A1C213D3500F78886 /* stick-off.png in Resources */,
+				007AB1C61C19824E00B7F7B5 /* Interface.storyboard in Resources */,
+				00C226711C225A0800D80403 /* menu-icon-left.png in Resources */,
+				00C4B01D1C213D3500F78886 /* stick-on2.png in Resources */,
+				00C226771C22680D00D80403 /* btn-cam.png in Resources */,
+				00C226781C22680D00D80403 /* btn-emergency.png in Resources */,
+				00C4B01C1C213D3500F78886 /* stick-on.png in Resources */,
+				00C226721C225A0800D80403 /* menu-icon-right.png in Resources */,
+				00C226701C225A0800D80403 /* menu-icon-front.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		007AB1CC1C19824E00B7F7B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007AB1DC1C19824E00B7F7B5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		007AB1A91C19824E00B7F7B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007AB1B31C19824E00B7F7B5 /* ViewController.swift in Sources */,
+				00EE94B51C1E94FA00A58A7F /* WatchStatus.swift in Sources */,
+				007AB21D1C1982CA00B7F7B5 /* RSManager.m in Sources */,
+				007AB1B11C19824E00B7F7B5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		007AB1CA1C19824E00B7F7B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007AB1DA1C19824E00B7F7B5 /* NotificationController.swift in Sources */,
+				00EE94B41C1E94F700A58A7F /* WatchStatus.swift in Sources */,
+				007AB1D81C19824E00B7F7B5 /* ExtensionDelegate.swift in Sources */,
+				007AB1D61C19824E00B7F7B5 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		007AB1C21C19824E00B7F7B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 007AB1BE1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */;
+			targetProxy = 007AB1C11C19824E00B7F7B5 /* PBXContainerItemProxy */;
+		};
+		007AB1D11C19824E00B7F7B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 007AB1CD1C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */;
+			targetProxy = 007AB1D01C19824E00B7F7B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		007AB1B41C19824E00B7F7B5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				007AB1B51C19824E00B7F7B5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		007AB1B91C19824E00B7F7B5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				007AB1BA1C19824E00B7F7B5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		007AB1C41C19824E00B7F7B5 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				007AB1C51C19824E00B7F7B5 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		007AB1DE1C19824E00B7F7B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		007AB1DF1C19824E00B7F7B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		007AB1E11C19824E00B7F7B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ControlDroneByWatch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ControlDroneByWatch/ControlDroneByWatch WatchKit Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		007AB1E21C19824E00B7F7B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ControlDroneByWatch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ControlDroneByWatch/ControlDroneByWatch WatchKit Extension-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		007AB1E51C19824E00B7F7B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = ControlDroneByWatch_WatchKit_Extension;
+				INFOPLIST_FILE = "ControlDroneByWatch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		007AB1E61C19824E00B7F7B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = ControlDroneByWatch_WatchKit_Extension;
+				INFOPLIST_FILE = "ControlDroneByWatch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		007AB1E91C19824E00B7F7B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ARSDK3_iOS_3_7_5",
+				);
+				INFOPLIST_FILE = ControlDroneByWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ControlDroneByWatch/ControlDroneByWatch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		007AB1EA1C19824E00B7F7B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ARSDK3_iOS_3_7_5",
+				);
+				INFOPLIST_FILE = ControlDroneByWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ControlDroneByWatch/ControlDroneByWatch-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		007AB1A81C19824E00B7F7B5 /* Build configuration list for PBXProject "ControlDroneByWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				007AB1DE1C19824E00B7F7B5 /* Debug */,
+				007AB1DF1C19824E00B7F7B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		007AB1E01C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				007AB1E11C19824E00B7F7B5 /* Debug */,
+				007AB1E21C19824E00B7F7B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		007AB1E41C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				007AB1E51C19824E00B7F7B5 /* Debug */,
+				007AB1E61C19824E00B7F7B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		007AB1E81C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				007AB1E91C19824E00B7F7B5 /* Debug */,
+				007AB1EA1C19824E00B7F7B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 007AB1A51C19824E00B7F7B5 /* Project object */;
+}

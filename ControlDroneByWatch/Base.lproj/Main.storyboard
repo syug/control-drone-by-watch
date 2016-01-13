@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ControlDroneByWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="59w-zt-UlP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-gV-gkL">
+                                <rect key="frame" x="205" y="466" width="50" height="50"/>
+                                <state key="normal" image="btn-takeoff.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cua-qs-Qu2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9p2-0u-Sml">
+                                <rect key="frame" x="273" y="466" width="50" height="50"/>
+                                <state key="normal" image="btn-landing.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wnm-5X-vuF"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3at-0y-wq1">
+                                <rect key="frame" x="440" y="528" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ym4-Kx-H6t"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-Ll-tOV">
+                                <rect key="frame" x="513" y="528" width="87" height="30"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Disconnect">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jUf-tu-t1M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s0-uc-uay">
+                                <rect key="frame" x="242" y="600" width="116" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Re-Start Session"/>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W7I-E8-gBF"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cmd-takeoff.png" translatesAutoresizingMaskIntoConstraints="NO" id="H8t-A4-caH">
+                                <rect key="frame" x="236" y="302" width="125" height="125"/>
+                            </imageView>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWZ-tf-QPe">
+                                <rect key="frame" x="341" y="466" width="50" height="50"/>
+                                <state key="normal" image="btn-cam.png"/>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4wB-Cr-ipH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTl-8J-jhi">
+                                <rect key="frame" x="273" y="538" width="50" height="50"/>
+                                <state key="normal" image="btn-emergency-phone.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fPA-x3-U3E"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H8t-A4-caH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="302" id="2dL-fO-xCf"/>
+                            <constraint firstItem="KWZ-tf-QPe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="191" id="6W4-Qy-5zL"/>
+                            <constraint firstItem="7s0-uc-uay" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EiI-Nr-qnU"/>
+                            <constraint firstItem="9p2-0u-Sml" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="191" id="H4i-pU-mKT"/>
+                            <constraint firstItem="7s0-uc-uay" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="315" id="N6R-0e-Lod"/>
+                            <constraint firstItem="xaH-gV-gkL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-70" id="SQq-lg-NXn"/>
+                            <constraint firstItem="H8t-A4-caH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="64" id="Sb6-X3-8ii"/>
+                            <constraint firstItem="xaH-gV-gkL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="191" id="Tdn-3y-1In"/>
+                            <constraint firstItem="9p2-0u-Sml" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="UNo-aa-agJ"/>
+                            <constraint firstItem="OTl-8J-jhi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="263" id="Udg-hq-Mtw"/>
+                            <constraint firstItem="xaH-gV-gkL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZPD-1x-SuS"/>
+                            <constraint firstItem="OTl-8J-jhi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="cIO-Ax-EYH"/>
+                            <constraint firstItem="KWZ-tf-QPe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="66" id="gg3-ze-onR"/>
+                            <constraint firstItem="59w-zt-UlP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nx6-xP-9xC"/>
+                            <constraint firstItem="H8t-A4-caH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="r6w-WT-xbS"/>
+                            <constraint firstItem="3at-0y-wq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tD5-Ii-QaC"/>
+                            <constraint firstItem="1cK-Ll-tOV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uws-ri-aN4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Sb6-X3-8ii"/>
+                                <exclude reference="ZPD-1x-SuS"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="img" destination="H8t-A4-caH" id="bUM-fO-jrg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg.png" width="320" height="568"/>
+        <image name="btn-cam.png" width="45" height="45"/>
+        <image name="btn-emergency-phone.png" width="50" height="50"/>
+        <image name="btn-landing.png" width="50" height="50"/>
+        <image name="btn-takeoff.png" width="50" height="50"/>
+        <image name="cmd-takeoff.png" width="125" height="125"/>
+    </resources>
+</document>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ControlDroneByWatch_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="0.84999999999999998" height="0.84999999999999998" alignment="center" backgroundImage="stick-off2.png" id="U82-dk-8Vl">
+                            <connections>
+                                <action selector="tapStickBtn" destination="AgC-eL-Hgc" id="IGV-sT-jWd"/>
+                            </connections>
+                        </button>
+                        <group width="110" height="30" alignment="center" id="45a-nU-pG5">
+                            <items>
+                                <button width="25" height="25" alignment="left" verticalAlignment="center" backgroundImage="btn-unlock.png" id="RA6-cf-Mrb">
+                                    <connections>
+                                        <action selector="tapLockBtn" destination="AgC-eL-Hgc" id="OeJ-qT-Ypk"/>
+                                    </connections>
+                                </button>
+                                <button width="25" height="25" alignment="center" verticalAlignment="center" backgroundImage="btn-emergency.png" id="4Pt-nC-mgd">
+                                    <connections>
+                                        <action selector="tapEmergencyBtn" destination="AgC-eL-Hgc" id="NYM-Rm-d7V"/>
+                                    </connections>
+                                </button>
+                                <button width="25" height="25" alignment="right" verticalAlignment="center" backgroundImage="btn-cam.png" id="i0F-KN-mbf">
+                                    <connections>
+                                        <action selector="tapCamBtn" destination="AgC-eL-Hgc" id="7yw-Cp-1GO"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="center" id="sag-ob-Luo">
+                            <items>
+                                <group width="0.29999999999999999" alignment="center" layout="vertical" id="Nt0-bn-Cg8">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="oMG-LT-1Y2"/>
+                                        <label alignment="center" verticalAlignment="center" text="YAW" textAlignment="center" id="rAQ-dZ-Msb">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.29999999999999999" alignment="center" layout="vertical" id="Rjo-iQ-gPn">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="djG-hI-en1"/>
+                                        <label alignment="center" verticalAlignment="center" text="ROLL" textAlignment="center" id="DWT-6h-spl">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.29999999999999999" alignment="center" layout="vertical" id="12S-95-upm">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="alJ-JS-2XN"/>
+                                        <label alignment="center" verticalAlignment="center" text="PITCH" textAlignment="center" id="xTN-EO-Z79">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" alignment="center" id="fx0-6t-gAh">
+                            <items>
+                                <group width="0.29999999999999999" alignment="center" id="LnG-Z5-i4S">
+                                    <items>
+                                        <label height="17" alignment="center" verticalAlignment="center" text="X:" textAlignment="center" id="H5o-Rv-zjj">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="gBX-13-m7D"/>
+                                    </items>
+                                </group>
+                                <group width="0.29999999999999999" alignment="center" id="vVl-Cy-CON">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Y:" textAlignment="center" id="lgH-8Z-STw">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="ATF-55-oKY"/>
+                                    </items>
+                                </group>
+                                <group width="0.29999999999999999" alignment="center" id="s2c-21-Oc7">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Z:" textAlignment="center" id="AS7-Bv-ZNg">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="center" text="0" textAlignment="center" id="PUR-Dr-9OS"/>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="P13-Qg-IqS">
+                        <items>
+                            <menuItem title="FrontFlip" image="menu-icon-front.png" id="sLw-L9-PPb">
+                                <connections>
+                                    <action selector="tapFrontFlipBtn" destination="AgC-eL-Hgc" id="zf6-eu-NjJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="BackFlip" image="menu-icon-back.png" id="hdY-82-cWA">
+                                <connections>
+                                    <action selector="tapBackFlipBtn" destination="AgC-eL-Hgc" id="bsW-GC-mVs"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="RightFlip" image="menu-icon-right.png" id="2vs-co-iLm">
+                                <connections>
+                                    <action selector="tapRightFlipBtn" destination="AgC-eL-Hgc" id="7h6-d2-Zrf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="LeftFlip" image="menu-icon-left.png" id="o3X-7M-jcp">
+                                <connections>
+                                    <action selector="tapLefttFlipBtn" destination="AgC-eL-Hgc" id="KaN-Y9-Vz4"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="labelPitch" destination="alJ-JS-2XN" id="bEk-B9-TVQ"/>
+                        <outlet property="labelRoll" destination="djG-hI-en1" id="1yO-bg-zbP"/>
+                        <outlet property="labelX" destination="gBX-13-m7D" id="rdB-Kw-7dP"/>
+                        <outlet property="labelY" destination="ATF-55-oKY" id="Xg9-b6-DvG"/>
+                        <outlet property="labelYaw" destination="oMG-LT-1Y2" id="rGk-8e-iqE"/>
+                        <outlet property="labelZ" destination="PUR-Dr-9OS" id="dgN-vB-F9C"/>
+                        <outlet property="lockbtn" destination="RA6-cf-Mrb" id="qn0-ky-Oyz"/>
+                        <outlet property="stickBtn" destination="U82-dk-8Vl" id="OLG-si-UnK"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="194" y="337"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="ControlDroneByWatch_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
