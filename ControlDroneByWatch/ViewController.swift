@@ -28,6 +28,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 		
 		img.image = nil
 		//self.view.addSubview(img)
+		manager.initialize()
 		
 		super.viewDidLoad()
 	}

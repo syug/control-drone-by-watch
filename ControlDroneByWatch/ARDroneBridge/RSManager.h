@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL isReady;
 
+- (void) initialize;
 - (void) startDiscovery;
 - (void) stopDiscovery;
 - (void) connect;

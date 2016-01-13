@@ -25,10 +25,14 @@
 @implementation RSManager
 
 -(void) initialize {
+	NSLog(@"RSManager // Initialize");
 	_services = [NSArray array];
 	_deviceController = NULL;
 	_stateSem = dispatch_semaphore_create(0);
 	_isReady = NO;
+	
+	self.alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Connecting ..."
+										   delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
 }
 
 
@@ -38,11 +42,17 @@
 #pragma mark - Discovery
 
 -(void) startDiscovery {
+	
 	// Add Notification
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoveryDidUpdateServices:) name:kARDiscoveryNotificationServicesDevicesListUpdated object:nil];
 	
 	// start the discovery
 	[[ARDiscovery sharedInstance] start];
+	
+	if( self.alertView ) {
+		self.alertView.message = @"Searching...";
+		[self.alertView show];
+	}
 }
 -(void) stopDiscovery {
 	// Remove Notification
@@ -50,6 +60,10 @@
 	
 	// stop discovery
 	[[ARDiscovery sharedInstance] stop];
+	
+	if( self.alertView ) {
+		[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
+	}
 }
 
 #pragma mark ARDiscovery notification
@@ -84,10 +98,12 @@
 }
 
 -(void) connect {
-	
-	//	[_batteryLabel setText:@"?%"];
-	//	_alertView = [[UIAlertView alloc] initWithTitle:[_service name] message:@"Connecting ..."
-	//										   delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+	if( self.alertView ) {
+		self.alertView.message = @"Connecting...";
+		if( !self.alertView.isHidden ) {
+			[self.alertView show];
+		}
+	}
 	
 	[self stopDiscovery];
 	[self setupController];
@@ -96,6 +112,14 @@
 -(void) disconnect {
 	[self stopDiscovery];
 	[self resetController];
+	
+	if( self.alertView ) {
+		//[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
+		self.alertView.message = @"Disconnecting...";
+		if( !self.alertView.isHidden ) {
+			[self.alertView show];
+		}
+	}
 }
 
 
@@ -202,10 +226,14 @@
 		// if an error occured, go back
 		if (error != ARCONTROLLER_OK)
 		{
+			_isReady = NO;
 			[self goBack];
+		} else {
+			_isReady = YES;
+			if( self.alertView ) {
+				[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
+			}
 		}
-		
-		_isReady = YES;
 	}
 }
 
@@ -214,13 +242,11 @@
 	NSLog(@"resetController // disconnecting...");
 	_isReady = NO;
 	
-//	if (_alertView && !_alertView.isHidden)
-//	{
-//		[_alertView dismissWithClickedButtonIndex:0 animated:NO];
-//	}
-//	_alertView = [[UIAlertView alloc] initWithTitle:[_service name] message:@"Disconnecting ..."
-//										   delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-//	[_alertView show];
+	if( self.alertView ) {
+		[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
+		self.alertView.message = @"Disconnecting...";
+		[self.alertView show];
+	}
 	
 	// in background
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -253,7 +279,7 @@
 		
 		// dismiss the alert view in main thread
 		dispatch_async(dispatch_get_main_queue(), ^{
-			//[_alertView dismissWithClickedButtonIndex:0 animated:TRUE];
+			[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
 			NSLog(@"disconnected.");
 		});
 	});
