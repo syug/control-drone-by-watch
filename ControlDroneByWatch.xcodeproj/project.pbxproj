@@ -140,6 +140,7 @@
 		0029E0271C23A71000C60DB1 /* btn-landing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-landing@2x.png"; sourceTree = "<group>"; };
 		0029E0281C23A71000C60DB1 /* btn-takeoff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-takeoff@2x.png"; sourceTree = "<group>"; };
 		0029E02D1C23A80300C60DB1 /* btn-emergency-phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-emergency-phone@2x.png"; sourceTree = "<group>"; };
+		00671EFB1C478FFA000AD649 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		00746AA31C22E1620075F016 /* cmd-picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-picture@2x.png"; sourceTree = "<group>"; };
 		00746AA41C22E1620075F016 /* cmd-steering0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-steering0@2x.png"; sourceTree = "<group>"; };
 		00746AA51C22E1620075F016 /* cmd-steering1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cmd-steering1@2x.png"; sourceTree = "<group>"; };
@@ -293,6 +294,7 @@
 				007AB1BC1C19824E00B7F7B5 /* Info.plist */,
 				007AB2141C1982CA00B7F7B5 /* ARDroneBridge */,
 				007AB2131C19828000B7F7B5 /* Bridging-Headers */,
+				00671EFB1C478FFA000AD649 /* PrefixHeader.pch */,
 			);
 			path = ControlDroneByWatch;
 			sourceTree = "<group>";
@@ -790,6 +792,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ARSDK3_iOS_3_7_5",
 				);
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ControlDroneByWatch/PrefixHeader.pch";
 				INFOPLIST_FILE = ControlDroneByWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch;
@@ -810,6 +813,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ARSDK3_iOS_3_7_5",
 				);
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ControlDroneByWatch/PrefixHeader.pch";
 				INFOPLIST_FILE = ControlDroneByWatch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = izm.org.uk.ControlDroneByWatch;

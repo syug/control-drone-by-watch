@@ -24,8 +24,9 @@
 
 @implementation RSManager
 
--(void) initialize {
-	NSLog(@"RSManager // Initialize");
+- (void)initialize
+{
+	printlog(@"initialize");
 	_services = [NSArray array];
 	_deviceController = NULL;
 	_stateSem = dispatch_semaphore_create(0);
@@ -36,15 +37,19 @@
 }
 
 
-/**
- * DISCOVERY DEVICES
- */
-#pragma mark - Discovery
+//////////////////////////////////////////////////
+#pragma mark - Discover ARDrone Device
+//////////////////////////////////////////////////
 
--(void) startDiscovery {
+/**
+ * Start Discovery
+ */
+- (void)startDiscovery
+{
+	printlog(@"startDiscovery // self.alertView.isHidden=%@", self.alertView.isHidden);
 	
 	// Add Notification
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoveryDidUpdateServices:) name:kARDiscoveryNotificationServicesDevicesListUpdated object:nil];
+	[self registerAppNotifications];
 	
 	// start the discovery
 	[[ARDiscovery sharedInstance] start];
@@ -53,36 +58,69 @@
 		self.alertView.message = @"Searching...";
 		[self.alertView show];
 	}
+	if( [self.delegate respondsToSelector:@selector(rsManagerDidStartDiscovery:)] ) {
+		[self.delegate rsManagerDidStartDiscovery:self];
+	}
 }
--(void) stopDiscovery {
+/**
+ * Stop Discovery
+ */
+-(void) stopDiscovery
+{
+	printlog(@"stopDiscovery");
+	
 	// Remove Notification
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:kARDiscoveryNotificationServicesDevicesListUpdated object:nil];
+	[self unregisterAppNotifications];
 	
 	// stop discovery
 	[[ARDiscovery sharedInstance] stop];
 	
-	if( self.alertView ) {
+	if( self.alertView && !self.alertView.isHidden ) {
 		[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
 	}
+	if( [self.delegate respondsToSelector:@selector(rsManagerDidStopDiscovery:)] ) {
+		[self.delegate rsManagerDidStopDiscovery:self];
+	}
+}
+
+/**
+ * Register app notifications
+ */
+- (void)registerAppNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoveryDidUpdateServices:) name:kARDiscoveryNotificationServicesDevicesListUpdated object:nil];
+}
+/**
+ * Unregister app notifications
+ */
+- (void)unregisterAppNotifications
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kARDiscoveryNotificationServicesDevicesListUpdated object:nil];
 }
 
 #pragma mark ARDiscovery notification
 
-- (void) discoveryDidUpdateServices:(NSNotification *)notification
+/**
+ * Serviceがdiscoverされた
+ */
+- (void)discoveryDidUpdateServices:(NSNotification *)notification
 {
 	// Called when the list of discovered services has changed
 	dispatch_async(dispatch_get_main_queue(), ^{
+		// リストをアップデートする
 		[self updateServicesList:[[notification userInfo] objectForKey:kARDiscoveryServicesList]];
 	});
 }
-
-- (void) updateServicesList:(NSArray *)services
+/**
+ * サービスリストを更新する
+ */
+- (void)updateServicesList:(NSArray *)services
 {
 	NSMutableArray * serviceArray = [NSMutableArray array];
 	
 	for (ARService * service in services)
 	{
-		// only display the ble services
+		// only the ble services
 		if ([service.service isKindOfClass:[ARBLEService class]])
 		{
 			[serviceArray addObject:service];
@@ -91,42 +129,60 @@
 	
 	_services = serviceArray;
 	
-	// AUTO CONNECT
 	if (_services.count>0) {
-		[self connect];
+		// 接続を開始する
+		[self startConnecting];
 	}
 }
 
--(void) connect {
+//////////////////////////////////////////////////
+#pragma mark - Connect ARDrone Device
+//////////////////////////////////////////////////
+
+/**
+ * Start Connecting
+ */
+- (void)startConnecting
+{
+	// Discoveryを停止
+	[self stopDiscovery];
+	// Controllerを設定
+	[self setupController];
+	
 	if( self.alertView ) {
 		self.alertView.message = @"Connecting...";
-		if( !self.alertView.isHidden ) {
+//		if( self.alertView.isHidden ) {
 			[self.alertView show];
-		}
+//		}
 	}
-	
-	[self stopDiscovery];
-	[self setupController];
+	if( [self.delegate respondsToSelector:@selector(rsManagerDidStartConnecting:)] ) {
+		[self.delegate rsManagerDidStartConnecting:self];
+	}
 }
-
--(void) disconnect {
+/**
+ * Stop Connecting
+ */
+- (void)stopConnecting
+{
 	[self stopDiscovery];
 	[self resetController];
 	
 	if( self.alertView ) {
-		//[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
 		self.alertView.message = @"Disconnecting...";
-		if( !self.alertView.isHidden ) {
-			[self.alertView show];
-		}
+		[self.alertView show];
+	}
+	if( [self.delegate respondsToSelector:@selector(rsManagerDidStopConnecting:)] ) {
+		[self.delegate rsManagerDidStopConnecting:self];
 	}
 }
 
 
+#pragma mark Device Controller
+
 /**
- * CONTROL DEVICE
+ * Setup Device Controller
  */
-- (void) setupController
+- (void)setupController
 {
 	// Serviceを一つ選択する
 	_service = [_services objectAtIndex:0];
@@ -135,118 +191,135 @@
 	[self createDeviceControllerWithService:_service];
 }
 
-- (ARDISCOVERY_Device_t *)createDiscoveryDeviceWithService:(ARService*)service
-{
-	ARDISCOVERY_Device_t *device = NULL;
-	eARDISCOVERY_ERROR errorDiscovery = ARDISCOVERY_OK;
-	
-	NSLog(@"- init discovey device  ... ");
-	
-	device = ARDISCOVERY_Device_New (&errorDiscovery);
-	if ((errorDiscovery != ARDISCOVERY_OK) || (device == NULL))
-	{
-		NSLog(@"device : %p", device);
-		NSLog(@"Discovery error :%s", ARDISCOVERY_Error_ToString(errorDiscovery));
-	}
-	
-	if (errorDiscovery == ARDISCOVERY_OK)
-	{
-		// get the ble service from the ARService
-		ARBLEService* bleService = service.service;
-		
-		// create a RollingSpider discovery device (ARDISCOVERY_PRODUCT_MINIDRONE)
-		errorDiscovery = ARDISCOVERY_Device_InitBLE (device, ARDISCOVERY_PRODUCT_MINIDRONE, (__bridge ARNETWORKAL_BLEDeviceManager_t)(bleService.centralManager), (__bridge ARNETWORKAL_BLEDevice_t)(bleService.peripheral));
-		
-		if (errorDiscovery != ARDISCOVERY_OK)
-		{
-			NSLog(@"Discovery error :%s", ARDISCOVERY_Error_ToString(errorDiscovery));
-		}
-	}
-	
-	return device;
-}
-
-- (void) createDeviceControllerWithService:(ARService*)service
+/**
+ * Create Device Controller
+ */
+- (void)createDeviceControllerWithService:(ARService*)service
 {
 	// first get a discovery device
-	ARDISCOVERY_Device_t *discoveryDevice = [self createDiscoveryDeviceWithService:service];
+	ARDISCOVERY_Device_t * discoveryDevice = [self createDiscoveryDeviceWithService:service];
 	
-	if (discoveryDevice != NULL)
+	if(discoveryDevice != NULL)
 	{
 		eARCONTROLLER_ERROR error = ARCONTROLLER_OK;
 		
-		// create the device controller
-		NSLog(@"- ARCONTROLLER_Device_New ... ");
-		_deviceController = ARCONTROLLER_Device_New (discoveryDevice, &error);
+		printlog(@"- ARCONTROLLER_Device_New ... ");
 		
+		// create the device controller
+		_deviceController = ARCONTROLLER_Device_New(discoveryDevice, &error);
+		
+		// Error
 		if ((error != ARCONTROLLER_OK) || (_deviceController == NULL))
 		{
-			NSLog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
+			printlog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
 		}
 		
 		// add the state change callback to be informed when the device controller starts, stops...
 		if (error == ARCONTROLLER_OK)
 		{
-			NSLog(@"- ARCONTROLLER_Device_AddStateChangedCallback ... ");
+			printlog(@"- ARCONTROLLER_Device_AddStateChangedCallback ... ");
 			error = ARCONTROLLER_Device_AddStateChangedCallback(_deviceController, stateChanged, (__bridge void *)(self));
 			
+			// Error
 			if (error != ARCONTROLLER_OK)
 			{
-				NSLog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
+				printlog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
 			}
 		}
 		
 		// add the command received callback to be informed when a command has been received from the device
 		if (error == ARCONTROLLER_OK)
 		{
-			NSLog(@"- ARCONTROLLER_Device_AddCommandRecievedCallback ... ");
+			printlog(@"- ARCONTROLLER_Device_AddCommandRecievedCallback ... ");
 			error = ARCONTROLLER_Device_AddCommandReceivedCallback(_deviceController, onCommandReceived, (__bridge void *)(self));
 			
+			// Error
 			if (error != ARCONTROLLER_OK)
 			{
-				NSLog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
+				printlog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
 			}
 		}
 		
 		// start the device controller (the callback stateChanged should be called soon)
 		if (error == ARCONTROLLER_OK)
 		{
-			NSLog(@"- ARCONTROLLER_Device_Start ... ");
-			error = ARCONTROLLER_Device_Start (_deviceController);
+			printlog(@"- ARCONTROLLER_Device_Start ... ");
+			error = ARCONTROLLER_Device_Start(_deviceController);
 			
+			// Error
 			if (error != ARCONTROLLER_OK)
 			{
-				NSLog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
+				printlog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
 			}
 		}
 		
 		// we don't need the discovery device anymore
-		ARDISCOVERY_Device_Delete (&discoveryDevice);
+		ARDISCOVERY_Device_Delete(&discoveryDevice);
 		
 		// if an error occured, go back
 		if (error != ARCONTROLLER_OK)
 		{
-			_isReady = NO;
-			[self goBack];
-		} else {
+			[self resetController];
+		}
+		// Everything is OK
+		else {
 			_isReady = YES;
 			if( self.alertView ) {
 				[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
 			}
+			if( [self.delegate respondsToSelector:@selector(rsManagerIsReady:)] ) {
+				[self.delegate rsManagerIsReady:self];
+			}
 		}
 	}
 }
-
-- (void) resetController
+/**
+ * Create Device
+ */
+- (ARDISCOVERY_Device_t *)createDiscoveryDeviceWithService:(ARService*)service
 {
-	NSLog(@"resetController // disconnecting...");
-	_isReady = NO;
+	printlog(@"createDiscoveryDeviceWithService");
+	printlog(@"- init discovey device  ... ");
 	
-	if( self.alertView ) {
-		[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
-		self.alertView.message = @"Disconnecting...";
-		[self.alertView show];
+	ARDISCOVERY_Device_t *device = NULL;
+	eARDISCOVERY_ERROR errorDiscovery = ARDISCOVERY_OK;
+	
+	// デバイスを生成
+	device = ARDISCOVERY_Device_New(&errorDiscovery);
+	
+	// Error
+	if ((errorDiscovery != ARDISCOVERY_OK) || (device == NULL))
+	{
+		printlog(@"device : %p", device);
+		printlog(@"Discovery error :%s", ARDISCOVERY_Error_ToString(errorDiscovery));
 	}
+	
+	// Success
+	if (errorDiscovery == ARDISCOVERY_OK)
+	{
+		// get the ble service from the ARService
+		ARBLEService* bleService = service.service;
+		
+		// create a RollingSpider discovery device (ARDISCOVERY_PRODUCT_MINIDRONE)
+		errorDiscovery = ARDISCOVERY_Device_InitBLE(device, ARDISCOVERY_PRODUCT_MINIDRONE, (__bridge ARNETWORKAL_BLEDeviceManager_t)(bleService.centralManager), (__bridge ARNETWORKAL_BLEDevice_t)(bleService.peripheral));
+		
+		// Error
+		if (errorDiscovery != ARDISCOVERY_OK)
+		{
+			printlog(@"Discovery error :%s", ARDISCOVERY_Error_ToString(errorDiscovery));
+		}
+	}
+	
+	return device;
+}
+/**
+ * Reset Device Controller
+ */
+- (void)resetController
+{
+	printlog(@"resetController // disconnecting...");
+	
+	_isReady = NO;
 	
 	// in background
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -261,12 +334,12 @@
 			
 			if (error != ARCONTROLLER_OK)
 			{
-				NSLog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
+				printlog(@"- error :%s", ARCONTROLLER_Error_ToString(error));
 			}
 			else
 			{
 				// wait for the state to change to stopped
-				NSLog(@"- wait new state ... ");
+				printlog(@"- wait new state ... ");
 				dispatch_semaphore_wait(_stateSem, DISPATCH_TIME_FOREVER);
 			}
 		}
@@ -279,27 +352,32 @@
 		
 		// dismiss the alert view in main thread
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
-			NSLog(@"disconnected.");
+			printlog(@"disconnected.");
+			
+			if( self.alertView && !self.alertView.isHidden ) {
+				[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
+			}
+			if( [self.delegate respondsToSelector:@selector(rsManagerDidDisconnected:)] ) {
+				[self.delegate rsManagerDidDisconnected:self];
+			}
+			
 		});
 	});
 }
 
-- (void) goBack
-{
-	NSLog(@"ERROR Occured. RESET Controller.");
-	[self resetController];
-	//[self.navigationController popViewControllerAnimated:YES];
-}
 
 #pragma mark Device controller callbacks
-// called when the state of the device controller has changed
+
+/**
+ * State Changed
+ * called when the state of the device controller has changed
+ */
 void stateChanged (eARCONTROLLER_DEVICE_STATE newState, eARCONTROLLER_ERROR error, void *customData)
 {
 	//PilotingViewController *pilotingViewController = (__bridge PilotingViewController *)customData;
 	RSManager * this = (__bridge RSManager *)customData;
 	
-	NSLog (@"newState: %d",newState);
+	printlog (@"newState: %d",newState);
 	
 	if (this != nil)
 	{
@@ -319,7 +397,8 @@ void stateChanged (eARCONTROLLER_DEVICE_STATE newState, eARCONTROLLER_ERROR erro
 				
 				// Go back
 				dispatch_async(dispatch_get_main_queue(), ^{
-					[this goBack];
+					// Reset Controller
+					[this resetController];
 				});
 				
 				break;
@@ -332,13 +411,15 @@ void stateChanged (eARCONTROLLER_DEVICE_STATE newState, eARCONTROLLER_ERROR erro
 				break;
 				
 			default:
-				NSLog(@"new State : %d not known", newState);
+				printlog(@"new State : %d not known", newState);
 				break;
 		}
 	}
 }
-
-// called when a command has been received from the drone
+/**
+ * Command Received
+ * called when a command has been received from the drone
+ */
 void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DICTIONARY_ELEMENT_t *elementDictionary, void *customData)
 {
 //	PilotingViewController *pilotingViewController = (__bridge PilotingViewController *)customData;
@@ -365,120 +446,134 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 		}
 	}
 }
-
-
-#pragma mark events
-
-- (void) emergency
+/**
+ * on update Battery Level
+ */
+- (void)onUpdateBatteryLevel:(uint8_t)percent
 {
-	NSLog(@"emergency");
+	printlog(@"onUpdateBatteryLevel // batteryLevel=%d", percent);
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if( [self.delegate respondsToSelector:@selector(rsManagerOnUpdateBatteryLevel:percentage:)] ) {
+			[self.delegate rsManagerOnUpdateBatteryLevel:self percentage:percent];
+		}
+	});
+}
+
+//////////////////////////////////////////////////
+#pragma mark - Commands
+//////////////////////////////////////////////////
+
+- (void)emergency
+{
+	printlog(@"emergency");
 	
 	// send an emergency command to the RollingSpider
 	_deviceController->miniDrone->sendPilotingEmergency(_deviceController->miniDrone);
 }
 
-- (void) takeoff
+- (void)takeoff
 {
-	NSLog(@"takeoff");
+	printlog(@"takeoff");
 	
 	_deviceController->miniDrone->sendPilotingTakeOff(_deviceController->miniDrone);
 }
 
-- (void) landing
+- (void)landing
 {
-	NSLog(@"landing");
+	printlog(@"landing");
 	_deviceController->miniDrone->sendPilotingLanding(_deviceController->miniDrone);
 }
 
 //events for gaz:
-- (void) gazUpStart
+- (void)gazUpStart
 {
 	// set the gaz value of the piloting command
 	_deviceController->miniDrone->setPilotingPCMDGaz(_deviceController->miniDrone, 50);
 }
-- (void) gazDownStart
+- (void)gazDownStart
 {
 	_deviceController->miniDrone->setPilotingPCMDGaz(_deviceController->miniDrone, -50);
 }
-- (void) gazEnd
+- (void)gazEnd
 {
 	_deviceController->miniDrone->setPilotingPCMDGaz(_deviceController->miniDrone, 0);
 }
 
 //events for yaw:
-- (void) yawLeftStart
+- (void)yawLeftStart
 {
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, -50);
 }
-- (void) yawRightStart
+- (void)yawRightStart
 {
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, 50);
 }
-- (void) setYawSpeedPercentage:(int8_t)percentage
+- (void)setYawSpeedPercentage:(int8_t)percentage
 {
 	// -100 to 100
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, percentage);
 }
-- (void) yawEnd
+- (void)yawEnd
 {
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, 0);
 }
 
 //events for yaw:
-- (void) rollLeftStart
+- (void)rollLeftStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, -50);
 }
-- (void) rollRightStart
+- (void)rollRightStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, 50);
 }
-- (void) setRollAnglePercentage:(int8_t)percentage
+- (void)setRollAnglePercentage:(int8_t)percentage
 {
-	NSLog(@"setRollAnglePercentage // percentage=%d", percentage);
+	printlog(@"setRollAnglePercentage // percentage=%d", percentage);
 	// -100 to 100
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, percentage);
 }
-- (void) rollEnd
+- (void)rollEnd
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 0);
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, 0);
 }
 
 //events for pitch:
-- (void) pitchForwardStart
+- (void)pitchForwardStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, 50);
 }
-- (void) pitchBackStart
+- (void)pitchBackStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, -50);
 }
-- (void) setPitchAnglePercentage:(int8_t)percentage
+- (void)setPitchAnglePercentage:(int8_t)percentage
 {
-	NSLog(@"setPitchAnglePercentage // percentage=%d", percentage);
+	printlog(@"setPitchAnglePercentage // percentage=%d", percentage);
 	// -100 to 100
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, percentage);
 }
-- (void) pitchEnd
+- (void)pitchEnd
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 0);
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, 0);
 }
 
 // Steering
-- (void) steeringStart
+- (void)steeringStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
 	
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, 0);
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, 0);
 }
-- (void) steeringEnd
+- (void)steeringEnd
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 0);
 	
@@ -487,41 +582,28 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 }
 
 // Flip
-- (void) flipFront
+- (void)flipFront
 {
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_FRONT);
 }
-- (void) flipBack
+- (void)flipBack
 {
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_BACK);
 }
-- (void) flipRight
+- (void)flipRight
 {
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_RIGHT);
 }
-- (void) flipLeft
+- (void)flipLeft
 {
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_LEFT);
 }
 
 // Picture
-- (void) takepicture
+- (void)takepicture
 {
 	_deviceController->miniDrone->sendMediaRecordPicture(_deviceController->miniDrone, 0);
 }
 
-
-
-#pragma mark UI updates from commands
-- (void) onUpdateBatteryLevel:(uint8_t)percent;
-{
-	NSLog(@"onUpdateBattery ...");
-	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		NSString *text = [[NSString alloc] initWithFormat:@"%d%%", percent];
-		NSLog(@"batteryLevel = %@", text);
-		//[_batteryLabel setText:text];
-	});
-}
 
 @end

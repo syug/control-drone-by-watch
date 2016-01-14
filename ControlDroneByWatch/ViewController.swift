@@ -69,9 +69,9 @@ class ViewController: UIViewController, WCSessionDelegate {
 			
 			
 		case 3:
-			manager.connect()
+			manager.startConnecting()
 		case 4:
-			manager.disconnect()
+			manager.stopConnecting()
 			
 		case 5:
 			startSession()
@@ -82,7 +82,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 			
 		default:
 			manager.emergency()
-			manager.disconnect()
+			manager.stopConnecting()
 		}
 	}
 	
