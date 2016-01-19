@@ -66,6 +66,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 	
 	// =========================================================================
 	// MARK: - Btn Events
+	// =========================================================================
 	
 	/**
 	 *
@@ -133,6 +134,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 	
 	// =========================================================================
 	// MARK: - Acceleration
+	// =========================================================================
 	
 //	enum WatchAltitude: Int {
 //		case Default
@@ -299,6 +301,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 	
 	// =========================================================================
 	// MARK: - WCSession
+	// =========================================================================
 	
 	func sendMessageToPhone(message: [String: AnyObject]) {
 		

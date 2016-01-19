@@ -9,13 +9,8 @@
 import Foundation
 
 class WatchStatus {
-	
 	init() {
-		
 	}
-	
-	
-	
 }
 
 enum MessageType: Int {
