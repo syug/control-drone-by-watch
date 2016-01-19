@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSArray * services;
 @property (nonatomic) ARCONTROLLER_Device_t * deviceController;
-@property (nonatomic, strong) UIAlertView * alertView;
 @property (nonatomic) dispatch_semaphore_t stateSem;
 @property (nonatomic, strong) ARService * service;
 
@@ -31,9 +30,6 @@
 	_deviceController = NULL;
 	_stateSem = dispatch_semaphore_create(0);
 	_isReady = NO;
-	
-	self.alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Connecting ..."
-										   delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
 }
 
 
@@ -46,7 +42,7 @@
  */
 - (void)startDiscovery
 {
-	printlog(@"startDiscovery // self.alertView.isHidden=%@", self.alertView.isHidden);
+	printlog(@"startDiscovery");
 	
 	// Add Notification
 	[self registerAppNotifications];
@@ -54,10 +50,6 @@
 	// start the discovery
 	[[ARDiscovery sharedInstance] start];
 	
-	if( self.alertView ) {
-		self.alertView.message = @"Searching...";
-		[self.alertView show];
-	}
 	if( [self.delegate respondsToSelector:@selector(rsManagerDidStartDiscovery:)] ) {
 		[self.delegate rsManagerDidStartDiscovery:self];
 	}
@@ -75,9 +67,6 @@
 	// stop discovery
 	[[ARDiscovery sharedInstance] stop];
 	
-	if( self.alertView && !self.alertView.isHidden ) {
-		[self.alertView dismissWithClickedButtonIndex:0 animated:NO];
-	}
 	if( [self.delegate respondsToSelector:@selector(rsManagerDidStopDiscovery:)] ) {
 		[self.delegate rsManagerDidStopDiscovery:self];
 	}
@@ -149,12 +138,6 @@
 	// Controllerを設定
 	[self setupController];
 	
-	if( self.alertView ) {
-		self.alertView.message = @"Connecting...";
-//		if( self.alertView.isHidden ) {
-			[self.alertView show];
-//		}
-	}
 	if( [self.delegate respondsToSelector:@selector(rsManagerDidStartConnecting:)] ) {
 		[self.delegate rsManagerDidStartConnecting:self];
 	}
@@ -167,10 +150,6 @@
 	[self stopDiscovery];
 	[self resetController];
 	
-	if( self.alertView ) {
-		self.alertView.message = @"Disconnecting...";
-		[self.alertView show];
-	}
 	if( [self.delegate respondsToSelector:@selector(rsManagerDidStopConnecting:)] ) {
 		[self.delegate rsManagerDidStopConnecting:self];
 	}
@@ -264,9 +243,6 @@
 		// Everything is OK
 		else {
 			_isReady = YES;
-			if( self.alertView ) {
-				[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
-			}
 			if( [self.delegate respondsToSelector:@selector(rsManagerIsReady:)] ) {
 				[self.delegate rsManagerIsReady:self];
 			}
@@ -354,9 +330,6 @@
 		dispatch_async(dispatch_get_main_queue(), ^{
 			printlog(@"disconnected.");
 			
-			if( self.alertView && !self.alertView.isHidden ) {
-				[self.alertView dismissWithClickedButtonIndex:0 animated:YES];
-			}
 			if( [self.delegate respondsToSelector:@selector(rsManagerDidDisconnected:)] ) {
 				[self.delegate rsManagerDidDisconnected:self];
 			}
@@ -387,7 +360,9 @@ void stateChanged (eARCONTROLLER_DEVICE_STATE newState, eARCONTROLLER_ERROR erro
 			{
 				// dismiss the alert view in main thread
 				dispatch_async(dispatch_get_main_queue(), ^{
-					//[pilotingViewController.alertView dismissWithClickedButtonIndex:0 animated:TRUE];
+					if( [this.delegate respondsToSelector:@selector(rsManagerDeviceStateRunning:)] ) {
+						[this.delegate rsManagerDeviceStateRunning:this];
+					}
 				});
 				break;
 			}
@@ -464,31 +439,30 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 #pragma mark - Commands
 //////////////////////////////////////////////////
 
+/**
+ * Takeoff / Landing
+ */
 - (void)emergency
 {
 	printlog(@"emergency");
-	
-	// send an emergency command to the RollingSpider
 	_deviceController->miniDrone->sendPilotingEmergency(_deviceController->miniDrone);
 }
-
 - (void)takeoff
 {
 	printlog(@"takeoff");
-	
 	_deviceController->miniDrone->sendPilotingTakeOff(_deviceController->miniDrone);
 }
-
 - (void)landing
 {
 	printlog(@"landing");
 	_deviceController->miniDrone->sendPilotingLanding(_deviceController->miniDrone);
 }
 
-//events for gaz:
+/**
+ * Gaz
+ */
 - (void)gazUpStart
 {
-	// set the gaz value of the piloting command
 	_deviceController->miniDrone->setPilotingPCMDGaz(_deviceController->miniDrone, 50);
 }
 - (void)gazDownStart
@@ -500,7 +474,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->setPilotingPCMDGaz(_deviceController->miniDrone, 0);
 }
 
-//events for yaw:
+/**
+ * Yaw
+ */
 - (void)yawLeftStart
 {
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, -50);
@@ -519,7 +495,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->setPilotingPCMDYaw(_deviceController->miniDrone, 0);
 }
 
-//events for yaw:
+/**
+ * Roll
+ */
 - (void)rollLeftStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
@@ -542,7 +520,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->setPilotingPCMDRoll(_deviceController->miniDrone, 0);
 }
 
-//events for pitch:
+/**
+ * Pitch
+ */
 - (void)pitchForwardStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
@@ -565,7 +545,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, 0);
 }
 
-// Steering
+/**
+ * Steering
+ */
 - (void)steeringStart
 {
 	_deviceController->miniDrone->setPilotingPCMDFlag(_deviceController->miniDrone, 1);
@@ -581,7 +563,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->setPilotingPCMDPitch(_deviceController->miniDrone, 0);
 }
 
-// Flip
+/**
+ * Flip
+ */
 - (void)flipFront
 {
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_FRONT);
@@ -599,7 +583,9 @@ void onCommandReceived (eARCONTROLLER_DICTIONARY_KEY commandKey, ARCONTROLLER_DI
 	_deviceController->miniDrone->sendAnimationsFlip(_deviceController->miniDrone, ARCOMMANDS_MINIDRONE_ANIMATIONS_FLIP_DIRECTION_LEFT);
 }
 
-// Picture
+/**
+ * Picture
+ */
 - (void)takepicture
 {
 	_deviceController->miniDrone->sendMediaRecordPicture(_deviceController->miniDrone, 0);

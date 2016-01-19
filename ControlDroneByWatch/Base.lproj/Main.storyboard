@@ -21,6 +21,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="59w-zt-UlP">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cmd-takeoff.png" translatesAutoresizingMaskIntoConstraints="NO" id="H8t-A4-caH">
+                                <rect key="frame" x="236" y="302" width="125" height="125"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-gV-gkL">
                                 <rect key="frame" x="205" y="466" width="50" height="50"/>
                                 <state key="normal" image="btn-takeoff.png">
@@ -39,24 +42,20 @@
                                     <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wnm-5X-vuF"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3at-0y-wq1">
-                                <rect key="frame" x="440" y="528" width="70" height="30"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Connect">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWZ-tf-QPe">
+                                <rect key="frame" x="341" y="466" width="50" height="50"/>
+                                <state key="normal" image="btn-cam.png"/>
                                 <connections>
-                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ym4-Kx-H6t"/>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4wB-Cr-ipH"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-Ll-tOV">
-                                <rect key="frame" x="513" y="528" width="87" height="30"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Disconnect">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTl-8J-jhi">
+                                <rect key="frame" x="273" y="538" width="50" height="50"/>
+                                <state key="normal" image="btn-emergency-phone.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jUf-tu-t1M"/>
+                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fPA-x3-U3E"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s0-uc-uay">
@@ -64,26 +63,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Re-Start Session"/>
                                 <connections>
-                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W7I-E8-gBF"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cmd-takeoff.png" translatesAutoresizingMaskIntoConstraints="NO" id="H8t-A4-caH">
-                                <rect key="frame" x="236" y="302" width="125" height="125"/>
-                            </imageView>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWZ-tf-QPe">
-                                <rect key="frame" x="341" y="466" width="50" height="50"/>
-                                <state key="normal" image="btn-cam.png"/>
-                                <connections>
-                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4wB-Cr-ipH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTl-8J-jhi">
-                                <rect key="frame" x="273" y="538" width="50" height="50"/>
-                                <state key="normal" image="btn-emergency-phone.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fPA-x3-U3E"/>
+                                    <action selector="restartBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1nD-Sf-yna"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -104,8 +84,6 @@
                             <constraint firstItem="KWZ-tf-QPe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="66" id="gg3-ze-onR"/>
                             <constraint firstItem="59w-zt-UlP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nx6-xP-9xC"/>
                             <constraint firstItem="H8t-A4-caH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-2" id="r6w-WT-xbS"/>
-                            <constraint firstItem="3at-0y-wq1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tD5-Ii-QaC"/>
-                            <constraint firstItem="1cK-Ll-tOV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uws-ri-aN4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

@@ -10,110 +10,108 @@ import UIKit
 import Foundation
 import WatchConnectivity
 
-class ViewController: UIViewController, WCSessionDelegate {
+class ViewController: UIViewController, WCSessionDelegate, RSManagerDelegate {
 	
 	// =========================================================================
 	//
 	var manager: RSManager = RSManager()
 	var wa: WatchStatus = WatchStatus()
+	let alert: UIAlertController! = UIAlertController(title: nil, message: "msg", preferredStyle: UIAlertControllerStyle.Alert)
 	
 	@IBOutlet weak var img: UIImageView!
 	//var img: UIImageView = UIImageView(frame: CGRectMake(236, 302, 125, 125))
 	
+	
 	// =========================================================================
 	// MARK: - View Lifecycle
+	// =========================================================================
 	
 	override func viewDidLoad() {
-		print("VIEW DID LOAD")
+		print(__FUNCTION__)
 		
 		img.image = nil
-		//self.view.addSubview(img)
 		manager.initialize()
+		manager.delegate = self
 		
 		super.viewDidLoad()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 	
 	override func viewWillAppear(animated: Bool) {
-		print("View will appear")
-		
-		manager.startDiscovery()
-		
-		//
+		print(__FUNCTION__)
 		startSession()
 	}
+	override func viewDidAppear(animated: Bool) {
+		print(__FUNCTION__)
+		manager.startDiscovery()
+	}
 	override func viewWillDisappear(animated: Bool) {
+		print(__FUNCTION__)
 		manager.stopDiscovery()
 	}
 	
 	
 	// =========================================================================
 	// MARK: - Btn
+	// =========================================================================
 	
 	@IBAction func btnTapped(sender: UIButton) {
 		print("btnTapped // tag=\(sender.tag)")
 		
+		if !manager.isReady { return }
+		
 		switch sender.tag {
-			
 			
 		case 0:
 			manager.takeoff()
 		case 1:
 			manager.landing()
 		case 2:
-			manager.emergency()
-			
-			
-		case 3:
-			manager.startConnecting()
-		case 4:
-			manager.stopConnecting()
-			
-		case 5:
-			startSession()
-			
-		case 6:
 			manager.takepicture()
-			
-			
+		case 3:
+			manager.emergency()
 		default:
 			manager.emergency()
 			manager.stopConnecting()
 		}
 	}
+	@IBAction func restartBtnTapped(sender: AnyObject) {
+		startSession()
+	}
+	@IBAction func connectBtnTapped(sender: AnyObject) {
+		if manager.isReady { manager.startConnecting() }
+	}
+	@IBAction func disconnectBtnTapped(sender: AnyObject) {
+		if manager.isReady { manager.stopConnecting() }
+	}
 	
 	
 	// =========================================================================
 	// MARK: - WCSession
+	// =========================================================================
 	
 	func startSession() {
 		print("startSession // WCSession.isSupported()=\(WCSession.isSupported())")
 		
 		if (WCSession.isSupported()) {
 			let session = WCSession.defaultSession()
-			session.delegate = self // conforms to WCSessionDelegate
+			session.delegate = self
 			session.activateSession()
 		}
 	}
 	
+	
 	// MARK: WCSessionDelegate
 	
 	func sessionWatchAltitudeDidChange(session: WCSession) {
-		print(__FUNCTION__)
-		print(session)
-		print("reachable:\(session.reachable)")
+		print("\(__FUNCTION__) // session=\(session) reachable:\(session.reachable)")
 	}
 	
 	func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-		print(__FUNCTION__)
-		
-		print("MESSAGE RECEIVED!!! // message['type']=\(message["type"])")
-		
-		//if !manager.isReady { return }
+		print("\(__FUNCTION__) // MESSAGE RECEIVED // message['type']=\(message["type"])")
 		
 		if let typeNum = message["type"] as? Int {
 			let type = MessageType(rawValue: typeNum)
@@ -124,7 +122,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 					if let command = ARCommand(rawValue: numCommand) {
 						// Commandを処理
 						handleCommand(command)
-						// 表示
+						// Commandを表示
 						dispatch_async(dispatch_get_main_queue()) { () -> Void in
 							self.setCommandImage( command )
 						}
@@ -175,8 +173,6 @@ class ViewController: UIViewController, WCSessionDelegate {
 		case .FlipLeft:			manager.flipLeft()
 			
 		case .TakePicture:		manager.takepicture()
-			
-		default:	manager.emergency()
 		}
 	}
 	func handleAltitude(roll: Int, pitch: Int) {
@@ -237,6 +233,43 @@ class ViewController: UIViewController, WCSessionDelegate {
 		} else {
 			img.image = nil
 		}
+	}
+	
+	// =========================================================================
+	// MARK: - RSManagerDelegate
+	// =========================================================================
+	
+	func rsManagerDidStartDiscovery(manager: RSManager!) {
+		print(__FUNCTION__)
+		alert.message = "Searching..."
+		presentViewController(alert, animated: true, completion: nil)
+	}
+	func rsManagerDidStopDiscovery(manager: RSManager!) {
+		dismissViewControllerAnimated(false, completion: nil)
+	}
+	//
+	func rsManagerDidStartConnecting(manager: RSManager!) {
+		alert.message = "Connecting..."
+		presentViewController(alert, animated: true, completion: nil)
+	}
+	func rsManagerDidStopConnecting(manager: RSManager!) {
+		alert.message = "Disconnecting..."
+		presentViewController(alert, animated: true, completion: nil)
+	}
+	func rsManagerDidDisconnected(manager: RSManager!) {
+		alert.message = "Disconnected."
+		presentViewController(alert, animated: true, completion: nil)
+	}
+	//
+	func rsManagerIsReady(manager: RSManager!) {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	func rsManagerDeviceStateRunning(manager: RSManager!) {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	
+	func rsManagerOnUpdateBatteryLevel(manager: RSManager!, percentage: UInt8) {
+		//
 	}
 	
 }

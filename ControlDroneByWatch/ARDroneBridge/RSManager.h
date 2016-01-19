@@ -19,6 +19,7 @@
 - (void)rsManagerDidStopConnecting:(RSManager *)manager;
 - (void)rsManagerDidDisconnected:(RSManager *)manager;
 - (void)rsManagerIsReady:(RSManager *)manager;
+- (void)rsManagerDeviceStateRunning:(RSManager *)manager;
 
 - (void)rsManagerOnUpdateBatteryLevel:(RSManager *)manager percentage:(uint8_t)percentage;
 
