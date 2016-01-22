@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import WatchConnectivity
+import PKHUD
 
 class ViewController: UIViewController, WCSessionDelegate, RSManagerDelegate {
 	
@@ -16,7 +17,6 @@ class ViewController: UIViewController, WCSessionDelegate, RSManagerDelegate {
 	//
 	var manager: RSManager = RSManager()
 	var wa: WatchStatus = WatchStatus()
-	let alert: UIAlertController! = UIAlertController(title: nil, message: "msg", preferredStyle: UIAlertControllerStyle.Alert)
 	
 	@IBOutlet weak var img: UIImageView!
 	//var img: UIImageView = UIImageView(frame: CGRectMake(236, 302, 125, 125))
@@ -241,35 +241,103 @@ class ViewController: UIViewController, WCSessionDelegate, RSManagerDelegate {
 	
 	func rsManagerDidStartDiscovery(manager: RSManager!) {
 		print(__FUNCTION__)
-		alert.message = "Searching..."
-		presentViewController(alert, animated: true, completion: nil)
+		showText("Searching...")
+		//showProgress()
 	}
 	func rsManagerDidStopDiscovery(manager: RSManager!) {
-		dismissViewControllerAnimated(false, completion: nil)
+		print(__FUNCTION__)
+		//hideProgress(true)
 	}
 	//
 	func rsManagerDidStartConnecting(manager: RSManager!) {
-		alert.message = "Connecting..."
-		presentViewController(alert, animated: true, completion: nil)
+		print(__FUNCTION__)
+		showText("Connecting...")
+		//showProgress()
 	}
 	func rsManagerDidStopConnecting(manager: RSManager!) {
-		alert.message = "Disconnecting..."
-		presentViewController(alert, animated: true, completion: nil)
+		print(__FUNCTION__)
+		showText("Disconnecting...")
+		//showProgress()
 	}
 	func rsManagerDidDisconnected(manager: RSManager!) {
-		alert.message = "Disconnected."
-		presentViewController(alert, animated: true, completion: nil)
+		print(__FUNCTION__)
+		
+		hideProgress(false)
+		let action = UIAlertAction(title: "reconnect", style: UIAlertActionStyle.Default) { (act:UIAlertAction) -> Void in
+			manager.startDiscovery()
+			self.dismissedAlert()
+		}
+		showAlert(nil, message: "Disconnected.", action: action)
 	}
 	//
 	func rsManagerIsReady(manager: RSManager!) {
-		dismissViewControllerAnimated(true, completion: nil)
+		print(__FUNCTION__)
+		
+		//showProgress("Connected.", hideDelay: 1.0)
 	}
 	func rsManagerDeviceStateRunning(manager: RSManager!) {
-		dismissViewControllerAnimated(true, completion: nil)
+		print(__FUNCTION__)
+		
+		showText("Connected.", hideDelay: 1.0)
 	}
 	
 	func rsManagerOnUpdateBatteryLevel(manager: RSManager!, percentage: UInt8) {
 		//
 	}
+	
+	
+	func showProgress(hideDelay:NSTimeInterval=0) {
+		PKHUD.sharedHUD.contentView = PKHUDProgressView()
+		if !PKHUD.sharedHUD.isVisible {
+			PKHUD.sharedHUD.show()
+		}
+		if hideDelay > 0 {
+			PKHUD.sharedHUD.hide(afterDelay: hideDelay)
+		}
+	}
+	func showText(text:String?, hideDelay:NSTimeInterval=0) {
+		PKHUD.sharedHUD.contentView = PKHUDTextView(text: text)
+		if !PKHUD.sharedHUD.isVisible {
+			PKHUD.sharedHUD.show()
+		}
+		if hideDelay > 0 {
+			PKHUD.sharedHUD.hide(afterDelay: hideDelay)
+		}
+	}
+	func hideProgress(animated: Bool=true) {
+		if PKHUD.sharedHUD.isVisible {
+			PKHUD.sharedHUD.hide(animated: animated)
+		}
+	}
+	
+	var alert: UIAlertController?
+	
+	func showAlert(title:String?, message:String?, action:UIAlertAction?) {
+		let newalert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+		if action != nil { newalert.addAction(action!) }
+		
+		if alert != nil {
+			self.dismissViewControllerAnimated(false, completion: { () -> Void in
+				self.presentViewController(newalert, animated: true, completion: nil)
+			})
+		} else {
+			self.presentViewController(newalert, animated: true, completion: nil)
+		}
+		alert = newalert
+	}
+	func dismissedAlert() {
+		self.alert = nil
+	}
+	/*
+	func dismissAlert() {
+		if alert != nil {
+			dismissViewControllerAnimated(true, completion: { () -> Void in
+			})
+			alert = nil
+		}
+	}
+	*/
+	
+	
 	
 }

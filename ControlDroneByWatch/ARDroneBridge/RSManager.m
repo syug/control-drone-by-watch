@@ -135,12 +135,15 @@
 {
 	// Discoveryを停止
 	[self stopDiscovery];
-	// Controllerを設定
-	[self setupController];
+	
 	
 	if( [self.delegate respondsToSelector:@selector(rsManagerDidStartConnecting:)] ) {
 		[self.delegate rsManagerDidStartConnecting:self];
 	}
+	
+	// Controllerを設定
+	[self setupController];
+	
 }
 /**
  * Stop Connecting
