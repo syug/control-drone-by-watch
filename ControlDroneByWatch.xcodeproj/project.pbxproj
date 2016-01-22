@@ -74,6 +74,7 @@
 		00C4B01D1C213D3500F78886 /* stick-on2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C4B0191C213D3500F78886 /* stick-on2.png */; };
 		00EE94B41C1E94F700A58A7F /* WatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE94B31C1E94F700A58A7F /* WatchStatus.swift */; };
 		00EE94B51C1E94FA00A58A7F /* WatchStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE94B31C1E94F700A58A7F /* WatchStatus.swift */; };
+		E80DB759DE2C4274516B1D00 /* Pods_ControlDroneByWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0360E8AA7C813F4AE19B2DE /* Pods_ControlDroneByWatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,9 @@
 		00C4B0181C213D3500F78886 /* stick-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-on.png"; sourceTree = "<group>"; };
 		00C4B0191C213D3500F78886 /* stick-on2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-on2.png"; sourceTree = "<group>"; };
 		00EE94B31C1E94F700A58A7F /* WatchStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchStatus.swift; sourceTree = "<group>"; };
+		34F56C77BC21B31C089B126B /* Pods-ControlDroneByWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ControlDroneByWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-ControlDroneByWatch/Pods-ControlDroneByWatch.release.xcconfig"; sourceTree = "<group>"; };
+		B587E65FC833A7887D3A8A3A /* Pods-ControlDroneByWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ControlDroneByWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ControlDroneByWatch/Pods-ControlDroneByWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		C0360E8AA7C813F4AE19B2DE /* Pods_ControlDroneByWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ControlDroneByWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,7 @@
 				007AB2001C19825C00B7F7B5 /* libARController.framework in Frameworks */,
 				007AB2081C19825C00B7F7B5 /* libARStream.framework in Frameworks */,
 				007AB20A1C19825C00B7F7B5 /* libARUtils.framework in Frameworks */,
+				E80DB759DE2C4274516B1D00 /* Pods_ControlDroneByWatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +274,8 @@
 				007AB1C31C19824E00B7F7B5 /* ControlDroneByWatch WatchKit App */,
 				007AB1D21C19824E00B7F7B5 /* ControlDroneByWatch WatchKit Extension */,
 				007AB1AE1C19824E00B7F7B5 /* Products */,
+				FC5C82602D1D0583D0A1EAB4 /* Pods */,
+				A87470D0F4BB6315185DC61A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -399,6 +406,23 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		A87470D0F4BB6315185DC61A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0360E8AA7C813F4AE19B2DE /* Pods_ControlDroneByWatch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC5C82602D1D0583D0A1EAB4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B587E65FC833A7887D3A8A3A /* Pods-ControlDroneByWatch.debug.xcconfig */,
+				34F56C77BC21B31C089B126B /* Pods-ControlDroneByWatch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,10 +430,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 007AB1E81C19824E00B7F7B5 /* Build configuration list for PBXNativeTarget "ControlDroneByWatch" */;
 			buildPhases = (
+				2A0FCF14A8989660CD449F30 /* Check Pods Manifest.lock */,
 				007AB1A91C19824E00B7F7B5 /* Sources */,
 				007AB1AA1C19824E00B7F7B5 /* Frameworks */,
 				007AB1AB1C19824E00B7F7B5 /* Resources */,
 				007AB1E71C19824E00B7F7B5 /* Embed Watch Content */,
+				098F78E3B74C9E6836722233 /* Embed Pods Frameworks */,
+				8A67B3B8B5F39E44732CA976 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -562,6 +589,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		098F78E3B74C9E6836722233 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ControlDroneByWatch/Pods-ControlDroneByWatch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A0FCF14A8989660CD449F30 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A67B3B8B5F39E44732CA976 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ControlDroneByWatch/Pods-ControlDroneByWatch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		007AB1A91C19824E00B7F7B5 /* Sources */ = {
@@ -783,6 +858,7 @@
 		};
 		007AB1E91C19824E00B7F7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B587E65FC833A7887D3A8A3A /* Pods-ControlDroneByWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -804,6 +880,7 @@
 		};
 		007AB1EA1C19824E00B7F7B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34F56C77BC21B31C089B126B /* Pods-ControlDroneByWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
